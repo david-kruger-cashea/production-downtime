@@ -8,6 +8,10 @@ function App() {
   const incidentsRef = collection(db, 'incidents');
 
   useEffect(() => {
+
+    console.log("AA", process.env.REACT_APP_FIREBASE_API_KEY);
+
+    
     const q = query(incidentsRef, orderBy('date', 'desc'));
     const unsubscribe = onSnapshot(q, (snapshot) => {
       const list = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
